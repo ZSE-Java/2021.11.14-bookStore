@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="/main.css">
+    <meta charset="UTF-8">
+    <title>BookStore</title>
+</head>
+<body>
+<div id="logo">
+    <img src="/logo.png" alt="Logo">
+</div>
+<div id="menu">
+    <a href="/main">Main</a>
+    <a href="/contact">Kontakt</a>
+    <a th:if="${logged == false}" href="/login">Zaloguj</a>
+    <a th:if="${logged == true}" href="/logout">Wyloguj</a>
+</div>
+<div id="content">
+    <p>Super Księgarnia sp.z.o.o</p>
+    <p>ul. Fajna 14/13</p>
+    <p>23-234 Kraków, Poland</p>
+    <p>Telefon: 123 123 123</p>
+    <p>Fax: 12 234 34 23</p>
+</div>
+</body>
+</html>
