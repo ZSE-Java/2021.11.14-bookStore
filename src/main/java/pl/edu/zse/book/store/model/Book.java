@@ -1,20 +1,37 @@
 package pl.edu.zse.book.store.model;
 
 public class Book {
+    private int id;
     private String title;
     private String author;
     private double price;
     private String isbn;
+    private int quantity;
 
 
-    public Book(String title, String author, double price, String isbn) {
+    public Book(int id,
+                String title,
+                String author,
+                double price,
+                String isbn,
+                int quantity) {
+        this.id = id;
         this.title = title;
         this.author = author;
         this.price = price;
         this.isbn = isbn;
+        this.quantity = quantity;
     }
 
     public Book() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -49,6 +66,14 @@ public class Book {
         this.isbn = isbn;
     }
 
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
     @Override
     public String toString() {
         return "Book{" +
@@ -57,5 +82,9 @@ public class Book {
                 ", price=" + price +
                 ", isbn='" + isbn + '\'' +
                 '}';
+    }
+
+    public void changeQuantity(int value) {
+        this.quantity += value;
     }
 }

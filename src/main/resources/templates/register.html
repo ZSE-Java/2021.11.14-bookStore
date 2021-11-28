@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="/main.css">
+    <meta charset="UTF-8">
+    <title>BookStore</title>
+</head>
+<body>
+<div th:replace="fragments.html :: logo"></div>
+<div th:replace="fragments.html :: menu"></div>
+<div id="content">
+    <form id="login-form" method="post">
+        <input type="text" placeholder="Imie" th:field="*{user.name}" pattern="[A-Z]{1}[a-z]+">
+        <input type="text" placeholder="Nazwisko" th:field="*{user.surname}">
+        <input type="text" placeholder="Login" th:field="*{user.login}">
+        <input type="password" placeholder="Hasło" th:field="*{user.password}">
+        <input type="password" placeholder="Repeat password" th:field="*{user.password2}">
+        <input type="submit" value="Zarejestruj">
+    </form>
+</div>
+</body>
+</html>

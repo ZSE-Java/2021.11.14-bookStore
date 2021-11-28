@@ -61,6 +61,16 @@
     margin-left: 30px;
 }
 
+.book .quantity {
+    display: inline-block;
+    margin-left: 30px;
+}
+
+.book .add-button {
+    display: inline-block;
+    margin-left: 30px;
+}
+
 #login-form {
     width: 500px;
     margin: 50px auto 0 auto;

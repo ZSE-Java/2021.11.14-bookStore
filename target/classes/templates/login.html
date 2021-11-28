@@ -6,20 +6,15 @@
     <title>BookStore</title>
 </head>
 <body>
-<div id="logo">
-    <img src="/logo.png" alt="Logo">
-</div>
-<div id="menu">
-    <a href="/main">Main</a>
-    <a href="/contact">Kontakt</a>
-    <a href="/login">Zaloguj</a>
-</div>
+<div th:replace="fragments.html :: logo"></div>
+<div th:replace="fragments.html :: menu"></div>
 <div id="content">
     <form id="login-form" method="post">
         <input type="text" placeholder="Login" name="login">
         <input type="password" placeholder="Hasło" name="password">
         <input type="submit" value="Zaloguj">
     </form>
+    <a href="/register">Zarejestruj</a>
 </div>
 </body>
 </html>

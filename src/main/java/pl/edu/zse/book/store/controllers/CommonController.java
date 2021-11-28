@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import pl.edu.zse.book.store.services.BookService;
+import pl.edu.zse.book.store.services.IBookService;
 import pl.edu.zse.book.store.session.SessionObject;
 
 import javax.annotation.Resource;
@@ -14,10 +14,15 @@ import javax.annotation.Resource;
 public class CommonController {
 
     @Autowired
-    BookService bookService;
+    IBookService bookService;
 
     @Resource
     SessionObject sessionObject;
+
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String main() {
+        return "redirect:/main";
+    }
 
     @RequestMapping(value = "/main", method = RequestMethod.GET)
     public String main(Model model) {
