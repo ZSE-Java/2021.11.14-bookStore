@@ -53,6 +53,12 @@ public class AuthenticationService2 implements IAuthenticationService {
         }
 
         registerUser.setPassword(DigestUtils.md5Hex(registerUser.getPassword()));
-        this.userDAO.addUser(registerUser);
+        User user = new User();
+        user.setId(registerUser.getId());
+        user.setName(registerUser.getName());
+        user.setSurname(registerUser.getSurname());
+        user.setLogin(registerUser.getLogin());
+        user.setPassword(registerUser.getPassword());
+        this.userDAO.addUser(user);
     }
 }

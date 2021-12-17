@@ -1,7 +1,13 @@
 package pl.edu.zse.book.store.model;
 
+import javax.persistence.*;
+
+@Entity(name = "torderposition")
 public class OrderPosition {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @ManyToOne
     private Book book;
     private int quantity;
 

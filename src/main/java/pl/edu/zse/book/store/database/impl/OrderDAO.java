@@ -13,9 +13,9 @@ import java.sql.*;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
-@Repository
 public class OrderDAO implements IOrderDAO {
 
     @Autowired
@@ -69,7 +69,7 @@ public class OrderDAO implements IOrderDAO {
 
                 List<OrderPosition> orderPositions =
                         this.orderPositionDAO.getAllPositionsByOrderId(order.getId());
-                order.setOrderPositions(orderPositions);
+                order.setOrderPositions(new HashSet<>(orderPositions));
 
                 result.add(order);
             }

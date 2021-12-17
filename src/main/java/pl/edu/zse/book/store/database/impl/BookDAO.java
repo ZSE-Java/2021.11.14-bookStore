@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import pl.edu.zse.book.store.database.IBookDAO;
 import pl.edu.zse.book.store.model.Book;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -13,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@Repository
 public class BookDAO implements IBookDAO {
 
     @Autowired
@@ -72,5 +72,10 @@ public class BookDAO implements IBookDAO {
         }
 
         return Optional.empty();
+    }
+
+    @Override
+    public void updateBook(Book book) {
+        throw new NotImplementedException();
     }
 }

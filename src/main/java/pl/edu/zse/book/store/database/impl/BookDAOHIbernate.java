@@ -16,4 +16,9 @@ public class BookDAOHIbernate implements IBookDAO {
     public Optional<Book> getBookById(int id) {
         return Optional.empty();
     }
+
+    @Override
+    public void updateBook(Book book) {
+
+    }
 }

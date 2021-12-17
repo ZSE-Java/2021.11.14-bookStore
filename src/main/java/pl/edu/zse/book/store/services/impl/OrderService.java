@@ -13,6 +13,7 @@ import pl.edu.zse.book.store.session.SessionObject;
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,9 +26,6 @@ public class OrderService implements IOrderService {
     @Autowired
     IOrderDAO orderDAO;
 
-    @Autowired
-    IOrderPositionDAO orderPositionDAO;
-
     @Resource
     SessionObject sessionObject;
 
@@ -36,8 +34,12 @@ public class OrderService implements IOrderService {
         Order order = new Order();
         order.setDateTime(LocalDateTime.now());
         order.setUser(sessionObject.getUser());
-        order.setOrderPositions(this.sessionObject
-                .getCart().getOrderPositions());
+        order.setOrderPositions(
+                new HashSet<>(
+                        this.sessionObject
+                .getCart().getOrderPositions()
+                )
+        );
 
         for(OrderPosition orderPosition : order.getOrderPositions()) {
             Optional<Book> bookBox =
@@ -57,8 +59,7 @@ public class OrderService implements IOrderService {
                     this.bookDAO
                             .getBookById(orderPosition.getBook().getId());
             bookBox.get().changeQuantity(-orderPosition.getQuantity());
-            //TODO updatowanie ksiażek na bazie
-            this.orderPositionDAO.addOrderPosition(orderPosition, order.getId());
+            this.bookDAO.updateBook(bookBox.get());
         }
 
         this.sessionObject.getCart().setOrderPositions(new ArrayList<>());
